@@ -45,4 +45,5 @@ pnpm preview
 ```
 
 ## Deployment
+
 Deploy the application to your preferred hosting service. For example, you can use Vercel, Netlify, or any other service that supports static site hosting.
