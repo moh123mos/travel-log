@@ -27,9 +27,10 @@
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.0",
     "eslint-plugin-format": "^1.0.1",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5"
   },
   "lint-staged": {
-    "*": "pnpm lint:fix"
+    "*": "pnpm lint"
   }
 }
