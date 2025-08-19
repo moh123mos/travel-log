@@ -4,7 +4,6 @@ import tryParseEnv from "./try-parse-env";
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]),
-  TURSO_DATABASE_URL: z.string().url(),
 });
 
 export type envSchema = z.infer<typeof envSchema>;
