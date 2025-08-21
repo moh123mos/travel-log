@@ -1,18 +1,16 @@
 <script lang="ts" setup>
-import { useAuthStore } from "~/stores/auth";
-
-const { loading, signIn } = useAuthStore();
+const authStore = useAuthStore();
 </script>
 
 <template>
   <button
     class="btn btn-accent"
-    :disabled="loading"
-    @click="signIn"
+    :disabled="authStore.loading"
+    @click="authStore.signIn"
   >
     Sign In with github
     <span
-      v-if="loading"
+      v-if="authStore.loading"
       class="loading loading-spinner loading-md"
     />
     <Icon
