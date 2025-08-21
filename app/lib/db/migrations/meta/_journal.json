@@ -15,6 +15,13 @@
       "when": 1755782558856,
       "tag": "0001_woozy_earthquake",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1755793091274,
+      "tag": "0002_black_mastermind",
+      "breakpoints": true
     }
   ]
 }
