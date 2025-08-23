@@ -22,5 +22,3 @@ const error = useRoute().query.error as string || "Unexpected error occurred!";
     </div>
   </div>
 </template>
-
-<style></style>
