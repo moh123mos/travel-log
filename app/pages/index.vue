@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-
+const authStore = useAuthStore();
 </script>
 
 <template>
@@ -13,10 +13,15 @@
           Keep track of your travels and adventures. Add locations, photos, and notes to
           create a digital journal of your journeys.
         </p>
-        <BtnsAuthBtn />
+        <BtnsAuthBtn v-if="!authStore.user" />
+        <nuxt-link
+          v-else
+          to="/dashboard"
+          class="btn btn-primary"
+        >
+          Start your journey
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
-
-<style></style>
