@@ -15,7 +15,7 @@ const authStore = useAuthStore();
       <div class="avatar">
         <div class="w-8 rounded-full">
           <img
-            v-if="authStore.user.image"
+            v-if="authStore.user?.image"
             :src="authStore.user.image"
             :alt="authStore.user.name"
           >
