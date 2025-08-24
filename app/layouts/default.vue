@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-
+const authStore = useAuthStore();
+await authStore.init();
 </script>
 
 <template>
@@ -11,6 +12,4 @@
   </div>
 </template>
 
-<style>
-
-</style>
+<style></style>
