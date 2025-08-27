@@ -11,10 +11,9 @@ const props = defineProps<{
   <NuxtLink
     :to="props.href"
     class="flex items-center gap-2 text-nowrap"
-    :class="{ 'justify-center': !props.showLabel, 'justify-start': props.showLabel }"
   >
     <Icon
-      size="24"
+      size="28"
       :name="props.icon"
     />
     {{ props.showLabel ? props.label : '' }}
