@@ -16,6 +16,7 @@ export default withNuxt(antfu({
   ignores: [".pnpm-store/**", "**/migrations/*"],
 }, {
   rules: {
+    "antfu/top-level-function": "off",
     "ts/no-redeclare": "off",
     "ts/consistent-type-definitions": ["error", "type"],
     "no-console": ["warn"],
