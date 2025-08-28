@@ -1,6 +1,11 @@
+import { customAlphabet } from "nanoid";
+import slugify from "slug";
+
 import db from "~/lib/db";
+import { findLocationBySlug, insertLocationDB } from "~/lib/db/queries/locations";
 import { insertLocation, location } from "~/lib/db/schema";
 
+const nanoid = customAlphabet("1234567890abcdefghijklmnopqrstuvwxyz", 5);
 export default defineEventHandler(async (event) => {
   const result = await readValidatedBody(event, body => insertLocation.safeParse(body));
 
@@ -25,11 +30,16 @@ export default defineEventHandler(async (event) => {
     }));
   }
 
-  const [created] = await db.insert(location).values({
-    ...result.data,
-    slug: result.data.name.toLocaleLowerCase().replaceAll(" ", "-").trim(),
-    userId: event.context.user.id,
-  }).returning();
+  let slug = slugify(result.data.name);
+  let existing = !!(await findLocationBySlug(slug));
+
+  while (existing) {
+    const id = nanoid();
+    slug = `${slug}-${id}`;
+    existing = !!(await findLocationBySlug(slug));
+  }
+
+  const [created] = await insertLocationDB(result.data, slug, event.context.user.id);
 
   return created;
 });
