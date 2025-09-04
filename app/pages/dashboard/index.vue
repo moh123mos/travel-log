@@ -38,10 +38,7 @@ onMounted(() => {
         </div>
       </transition-group>
     </div>
-    <div
-      v-if="locations && locations.length <= 0"
-      class="flex flex-col gap-2 mt-4"
-    >
+    <div v-else>
       <p>Add a location to get started</p>
       <nuxt-link
         to="/dashboard/add"
