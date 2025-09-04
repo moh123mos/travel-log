@@ -118,7 +118,7 @@ onBeforeRouteLeave(() => {
           class="btn btn-primary"
           :disabled="loading"
         >
-          add loction
+          add location
           <span
             v-if="loading"
             class="loading loading-spinner loading-md"

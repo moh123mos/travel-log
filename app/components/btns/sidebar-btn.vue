@@ -10,7 +10,9 @@ const props = defineProps<{
 <template>
   <NuxtLink
     :to="props.href"
-    class="flex items-center gap-2 text-nowrap"
+    class="flex items-center gap-2 text-nowrap tooltip-right"
+    :class="!props.showLabel ? 'tooltip' : ''"
+    :data-tip="label"
   >
     <Icon
       size="28"

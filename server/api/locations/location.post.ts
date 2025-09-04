@@ -1,20 +1,13 @@
 import { customAlphabet } from "nanoid";
 import slugify from "slug";
 
-import db from "~/lib/db";
 import { findLocationBySlug, insertLocationDB } from "~/lib/db/queries/locations";
-import { insertLocation, location } from "~/lib/db/schema";
+import { insertLocation } from "~/lib/db/schema";
+import { definedAuthenticatedEventHandler } from "~/utils/defined-authenticated-event-handler";
 
 const nanoid = customAlphabet("1234567890abcdefghijklmnopqrstuvwxyz", 5);
-export default defineEventHandler(async (event) => {
+export default definedAuthenticatedEventHandler(async (event) => {
   const result = await readValidatedBody(event, body => insertLocation.safeParse(body));
-
-  if (!event.context.user) {
-    return sendError(event, createError({
-      statusCode: 401,
-      statusMessage: "Unauthorized",
-    }));
-  }
 
   if (!result.success) {
     const statusMessage = result.error.issues.map(issue => `${issue.path.join("")}: ${issue.message}`).join("; ");
