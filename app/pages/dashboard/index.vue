@@ -39,7 +39,7 @@ onMounted(() => {
       </transition-group>
     </div>
     <div
-      v-if="locations && locations.length <= 0"
+      v-else
       class="flex flex-col gap-2 mt-4"
     >
       <p>Add a location to get started</p>
