@@ -40,8 +40,6 @@ onMounted(() => {
     </div>
     <div
       v-else
-      class="flex flex-col gap-2 mt-4"
-    >
       <p>Add a location to get started</p>
       <nuxt-link
         to="/dashboard/add"
