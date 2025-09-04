@@ -38,8 +38,7 @@ onMounted(() => {
         </div>
       </transition-group>
     </div>
-    <div
-      v-else
+    <div v-else>
       <p>Add a location to get started</p>
       <nuxt-link
         to="/dashboard/add"
