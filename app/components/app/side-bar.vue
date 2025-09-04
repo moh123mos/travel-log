@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-const isOpenSidebar = ref(false);
+const isOpenSidebar = ref(true);
+const sidebarStore = useSidebarStore();
 
 function saveInLocalStorage(key: string, value: any) {
   localStorage.setItem(key, JSON.stringify(value));
@@ -48,7 +49,30 @@ onMounted(() => {
           :show-label="isOpenSidebar"
         />
       </li>
-      <div class="divider" />
+      <div
+        v-if="sidebarStore.loading || sidebarStore.sidebarItems.length"
+        class="divider my-2"
+      />
+      <div v-if="sidebarStore.loading">
+        <div class="skeleton h-6 w-full" />
+      </div>
+      <div
+        v-else
+        class="flex flex-col"
+      >
+        <li
+          v-for="loc in sidebarStore.sidebarItems"
+          :key="loc.id"
+        >
+          <BtnsSidebarBtn
+            :href="loc.href"
+            :label="loc.label"
+            :icon="loc.icon"
+            :show-label="isOpenSidebar"
+          />
+        </li>
+      </div>
+      <div class="divider my-2" />
       <li>
         <BtnsSidebarBtn
           href="/sign-out"
@@ -60,3 +84,27 @@ onMounted(() => {
     </ul>
   </div>
 </template>
+
+<style scoped>
+/* Custom scrollbar styles using Tailwind and daisyUI with @apply */
+.overflow-y-auto {
+  /* Custom scrollbar styles using plain CSS */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-background);
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  width: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+  /* blue-500 */
+  border-radius: 9999px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background-color: #e5e7eb;
+  /* gray-200 */
+}
+</style>
