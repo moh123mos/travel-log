@@ -10,10 +10,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex-1 flex h-screen">
+  <div class="flex-1 flex min-h-screen">
     <app-side-bar />
-    <div class="w-full p-8">
-      <NuxtPage />
+    <div class="w-full p-8 flex flex-col gap-4">
+      <nuxt-page />
+      <app-map />
     </div>
   </div>
 </template>
+
+<style scoped>
+@import "tailwindcss";
+
+:deep(.maplibregl-map) {
+  @apply flex-1 min-h-96;
+}
+</style>
