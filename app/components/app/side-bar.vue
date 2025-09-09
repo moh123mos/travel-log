@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="flex relative h-screen duration-300 transition-all"
+    class="flex relative min-h-screen duration-300 transition-all"
     :class="{ 'w-64': isOpenSidebar, 'w-16': !isOpenSidebar }"
   >
     <Icon
