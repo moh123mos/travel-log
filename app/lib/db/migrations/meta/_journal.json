@@ -22,6 +22,13 @@
       "when": 1755793091274,
       "tag": "0002_black_mastermind",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1757419858244,
+      "tag": "0003_clean_mimic",
+      "breakpoints": true
     }
   ]
 }
