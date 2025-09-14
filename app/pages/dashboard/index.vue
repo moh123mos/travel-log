@@ -16,16 +16,19 @@ onMounted(() => {
       v-if="status === 'pending'"
       class="loading loading-spinner loading-xl"
     />
-    <div v-else-if="locations && locations.length > 0">
+    <div
+      v-else-if="locations && locations.length > 0"
+    >
       <transition-group
         name="list"
         tag="div"
-        class="flex justify-center flex-wrap gap-4"
+        class="flex flex-nowrap gap-4 pb-4 overflow-auto"
+        style="scrollbar-width: none;"
       >
         <div
           v-for="loc in locations"
           :key="loc.id"
-          class="card bg-base-300 h-40 w-72 shadow-md"
+          class="card min-w-[200px] bg-base-300 h-40 w-72 shadow-md"
         >
           <div class="card-body">
             <h2 class="card-title">
